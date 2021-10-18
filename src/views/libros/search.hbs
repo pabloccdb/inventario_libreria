@@ -1,0 +1,30 @@
+
+ <div class="row mt-5">
+    <div class="col-sm">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>ID Libro</th>
+            <th>Titulo</th>
+            <th>Autor</th>
+            <th>Fecha de lanzamiento</th>
+            <th>Stock</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each libros}}
+          <tr>
+            <th>{{id}}</th>
+            <td>{{titulo}}</td>
+            <td>{{autor}}</td>
+            <td>{{fechalanzamiento}}</td>
+            <td>{{stock}}</td>
+            <td><a href="/libros/delete/{{id}}" class="button is-danger">Delete</a> <a href="/libros/update/{{id}}"
+                class="button is-info">Edit</a></td>
+          </tr>
+
+          {{/each}}
+        </tbody>
+      </table>
+    </div>

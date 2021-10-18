@@ -1,0 +1,155 @@
+<div class="container">
+  {{#if update}}
+  {{else}}
+  <div class="row col-sm-3">
+    <form action="/libros/search" method="post">
+      <div class="field">
+        <label class="label">Buscar</label>
+        <div class="control has-icons-left">
+          <input type="text" name="buscar" placeholder="Harry Potter" class="input" required>
+          <span class="icon is-small is-left">
+            <i class="fa fa-book"></i>
+          </span>
+        </div>
+      </div>
+      <button class="button is-success">Search</button>
+    </form>
+  </div>
+  <div class="row mt-5">
+    <div class="col-sm">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>ID Libro</th>
+            <th>Titulo</th>
+            <th>Autor</th>
+            <th>Fecha de lanzamiento</th>
+            <th>Stock</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each libros}}
+          <tr>
+            <th>{{id}}</th>
+            <td>{{titulo}}</td>
+            <td>{{autor}}</td>
+            <td>{{fechalanzamiento}}</td>
+            <td>{{stock}}</td>
+            <td><a href="/libros/delete/{{id}}" class="button is-danger">Delete</a> <a href="/libros/update/{{id}}"
+                class="button is-info">Edit</a></td>
+          </tr>
+          {{else}}
+          <tr>
+            <th>No hay libros registrados</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{/if}}
+    <div class="col-md-4 center">
+      <div>
+        {{#if update}}
+        <form action="/libros/update/{{update.id}}" method="post" class="box">
+          <div class="field">
+            <label class="label">Titulo</label>
+            <div class="control has-icons-left">
+              <input type="text" value="{{update.titulo}}" name="titulo" placeholder="Harry Potter" class="input"
+                required>
+              <span class="icon is-small is-left">
+                <i class="fa fa-book"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="" class="label">Autor</label>
+            <div class="control has-icons-left">
+              <input type="text" value="{{update.autor}}" name="autor" placeholder="J.K. Rowling" class="input"
+                required>
+              <span class="icon is-small is-left">
+                <i class="fa fa-user"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="" class="label">Año</label>
+            <div class="control has-icons-left">
+              <input type="number" value="{{update.fechalanzamiento}}" name="fechalanzamiento" placeholder="1987"
+                class="input" required>
+              <span class="icon is-small is-left">
+                <i class="fa fa-calendar"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="" class="label">Stock</label>
+            <div class="control has-icons-left">
+              <input type="number" value="{{update.stock}}" name="stock" placeholder="15" class="input" required>
+              <span class="icon is-small is-left">
+                <i class="far fa-inventory"></i>>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <button class="button is-success is-fullwidth">
+              Actualizar Libro
+            </button>
+          </div>
+        </form>
+        {{else}}
+        <form action="/libros/add/" method="post" class="box">
+          <div class="field">
+            <label class="label">Titulo</label>
+            <div class="control has-icons-left">
+              <input type="text" name="titulo" placeholder="Harry Potter" class="input" required>
+              <span class="icon is-small is-left">
+                <i class="fa fa-book"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="" class="label">Autor</label>
+            <div class="control has-icons-left">
+              <input type="text" name="autor" placeholder="J.K. Rowling" class="input" required>
+              <span class="icon is-small is-left">
+                <i class="fa fa-user"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="" class="label">Año</label>
+            <div class="control has-icons-left">
+              <input type="number" name="fechalanzamiento" placeholder="1987" class="input" required>
+              <span class="icon is-small is-left">
+                <i class="fa fa-calendar"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="" class="label">Stock</label>
+            <div class="control has-icons-left">
+              <input type="number" name="stock" placeholder="15" class="input" required>
+              <span class="icon is-small is-left">
+                <i class="far fa-inventory"></i>>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <button class="button is-success is-fullwidth">
+              Registrar Libro
+            </button>
+          </div>
+        </form>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+
+</div>
